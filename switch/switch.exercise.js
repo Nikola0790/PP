@@ -270,3 +270,31 @@ switch ("/") {
     console.log(b * c);
     break;
 }
+
+/****** RESENJE ******/
+var a = 22;
+var b = 0;
+
+var operation = "/";
+
+switch (operation) {
+  case "+":
+    console.log(a + b);
+    break;
+  case "-":
+    console.log(a - b);
+    break;
+  case "*":
+    console.log(a * b);
+    break;
+  case "/":
+    if (b === 0) {
+      console.log("b can't be zero");
+    } else {
+      console.log(a / b);
+    }
+    break;
+
+  default:
+    break;
+}
