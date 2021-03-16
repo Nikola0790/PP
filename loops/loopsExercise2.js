@@ -132,21 +132,87 @@ for (var j = 0; j<arr6.length; j++) {
 }else {
   console.log('The array isn\'t symmetric.');
 }
+
+// ****** New solution ****** //
+
+console.log('********* NEW ************');
+var arr = [2, 4, -2, 7, -2, 4, 2];
+var arr2 = [];
+var equal = 0;
+
+for (var i = arr.length -1; i >= 0; i--){
+    arr2[arr2.length] = arr[i]
+}
+console.log(arr2);
+console.log(arr);
+
+for (var j = 0; j < arr2.length; j++) {
+    if (arr2[j] === arr[j]) {
+        equal += 1
+    }
+}
+if (equal === arr.length && equal === arr2.length){
+    console.log('The array is symmetric.');
+}else {
+    console.log('The array isn\'t symmetric.');
+}
+
+
+
+console.log('*** Second array ***'); 
+var arr = [3, 4, 12, 8];
+var arr2 = [];
+var equal = 0;
+
+for (var i = arr.length -1; i >= 0; i--){
+    arr2[arr2.length] = arr[i]
+}
+console.log(arr2);
+console.log(arr);
+
+for (var j = 0; j < arr2.length; j++) {
+    if (arr2[j] === arr[j]) {
+        equal += 1
+    }
+}
+if (equal === arr.length && equal === arr2.length){
+    console.log('The array is symmetric.');
+}else {
+    console.log('The array isn\'t symmetric.');
+}
+
+// ********** BEST SOLUTION ************* //
+console.log('BEST SOLUTION !!!');
+var arr = [2, 4, -2, 7, -2, 4, 2];
+var isSym = true;
+
+for (var start = 0, end = arr.length - 1; start < end; start++, end--) {
+  if (arr[start] !== arr[end]) {
+    isSym = false;
+  }
+}
+
+if (isSym === true) {
+  console.log('The array is symmetric.');
+}else {
+  console.log('The array isn\'t symmetric.');
+} 
+
 /* 7. Write a program that intertwines two arrays. You can assume the arrays are of the same
 length.
 Input arrays: [4, 5, 6, 2], [3, 8, 11, 9]
 Output array: [4, 3, 5, 8, 6, 11, 2, 9]
  */
 console.log("*** Task 7 ***");
-var arr7 = [4, 5, 6, 2];
-var arr7A = [3, 8, 11, 9];
-var interTw = [];
+var arr1 = [4, 5, 6, 2];
+var arr2 = [3, 8, 11, 9];
+var arr3 = [];
 
-for (var i = 0; i < arr7.length; i++) {
-  interTw[interTw.length] = arr7[i];
-  interTw[interTw.length] = arr7A[i];
+for (var i = 0; i < arr1.length; i++) {
+    arr3[arr3.length] = arr1[i]
+    arr3[arr3.length] = arr2[i]
 }
-console.log(interTw);
+console.log(arr3);
 
 /* 8. Write a program that concatenates two arrays.
 Input arrays: [4, 5, 6, 2], [3, 8, 11, 9]
@@ -166,6 +232,20 @@ for (var j = 0; j < arr8A.length; j++) {
   arr8B[arr8.length + j] = arr8A[j];
 }
 console.log(arr8B);
+
+// ********** Second way solution ***************
+
+var arrA = [4, 5, 6, 2];
+var arrB = [3, 8, 11, 9];
+var arrC = [];
+
+for (var i = 0; i < arrA.length; i++) {
+    arrC[arrC.length] = arrA[i]
+}
+for (var j = 0; j < arrB.length; j++) {
+    arrC[arrC.length] = arrB[j]
+}
+console.log(arrC);
 
 /* 9. Write a program that deletes a given element e from the array a.
 Input: e = 2, a = [4, 6, 2, 8, 2, 2]
@@ -190,22 +270,41 @@ Output: [2, -2, 33, 78, 12, 5, 8] */
 console.log("*** Task 10 ***");
 
 var e = 78;
-var p = 0;
+var p = 3;                                  // corrected mistake
 var a = [2, -2, 33, 12, 5, 8];
-var b = [];
+var x = [];                                       
 
 if (p < a.length) {
-  for (var i = 0; i < a.length && i <= p; i++) {
-    if(p === i) {
-      b[i] = e;
-    } else {
-      b[i] = a[i];
+    for (var i = 0; i < a.length && i <= p; i++){
+        if (p === i) {
+            x[x.length] = e
+        }else {
+            x[x.length] = a[i]
+        }
     }
-  }
-  for (var j = 0; j < a.length - p; j++) {
-    b[b.length] = a[p+j];
-  }
-  console.log(b);
+    for (var j = 0; j < a.length; j++) {
+        if (j >= p) {
+            x[x.length] = a[j]
+        }
+    }
 }else {
-  console.log('Error');
+    console.log('Error');
 }
+
+console.log(x);
+
+// **** Better solution ****
+console.log('*** Better solution ***');
+
+var arr = [2, -2, 33, 12, 5, 8];
+var e = 78;
+var p = 3;
+var newArray = [];
+
+for (var i = 0; i < arr.length; i++) {
+	if (i === p) {
+		newArray[p] = e;
+	}
+	newArray[newArray.length] = arr[i];
+}
+console.log(newArray);
