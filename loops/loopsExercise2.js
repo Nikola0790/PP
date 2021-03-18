@@ -233,7 +233,7 @@ for (var j = 0; j < arr8A.length; j++) {
 }
 console.log(arr8B);
 
-// ********** Second way solution ***************
+// ********** Second solution ***************
 
 var arrA = [4, 5, 6, 2];
 var arrB = [3, 8, 11, 9];
@@ -246,6 +246,23 @@ for (var j = 0; j < arrB.length; j++) {
     arrC[arrC.length] = arrB[j]
 }
 console.log(arrC);
+
+// *********** Best solution *************
+
+var a = [4, 5, 6, 2, 5, 9];                 // if arrays doesn't the same length, this solution is the best.
+var b = [3, 8, 11, 9];
+var c = [];
+var y = 0;
+
+for (x = 0; x < a.length + b.length; x++) {
+    if (x < a.length) {
+        c[x] = a[x]; 
+    } else {
+        c[x] = b[y]; 
+        y++;
+    }
+}
+console.log(c);
 
 /* 9. Write a program that deletes a given element e from the array a.
 Input: e = 2, a = [4, 6, 2, 8, 2, 2]
