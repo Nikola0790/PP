@@ -61,6 +61,7 @@ function aritMean (a, b, c, d) {
 
 var numbers = aritMean (1, 2, 3, 6);
 console.log(numbers);
+
 console.log('\n');
 
 /* 5. Write a program that draws a square of a given size. For example, if the size of square
@@ -73,31 +74,36 @@ is 5 the program should draw:
 */
 console.log('*** Task 5. ***');
 
-/*************** Don't work!!! ***************/
 
-var starL = '';
 
-function sq (line) {
-    for (var i = 1; i <= line; i++) {  
-        if (i === 1 || i === line) {
-        for (var k = 0; k < line; k++) {
-            starL = starL + '*'; 
-        }
-        }
-        else {
-            for (var j = 1; j <= line; j++) {
-                if (j === 1 || j === line) {
-                    var starL = '*';
-                }    
-                else {            
-                    starL = starL + ' '; 
+var stars = '';
+
+function square (num) {
+    for (var i = 0; i < num; i++) {
+        if (i === 0 || i === num - 1) {
+            for (var j = 0; j < num; j++) {
+               if (j === num - 1) {
+                   stars += '* \n';
+                } else {
+                    stars += '*';
                 }
+            }
+        } else {
+            for (var j = 0; j < num; j++) {
+                if (j === 0) {
+                    stars += '*';
+                } else if (j === num - 1) {
+                    stars += '* \n';
+                } else {
+                    stars += ' ';
+                } 
             }
         }
     }
+    return stars;
 }
-var stars = sq(5);
-console.log(stars);
+var s = square (5);
+console.log(s);
 
 console.log('\n');
 /*
@@ -147,6 +153,7 @@ array.
 Inputs: a = [2, 4, 7, 8, 7, 7, 1], e = 7
 Result: 3 */
 console.log('*** Task 8. ***');
+
 var e = 7;
 var res = 0;
 
