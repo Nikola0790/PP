@@ -74,8 +74,6 @@ is 5 the program should draw:
 */
 console.log('*** Task 5. ***');
 
-
-
 var stars = '';
 
 function square (num) {
@@ -104,6 +102,30 @@ function square (num) {
 }
 var s = square (5);
 console.log(s);
+
+/* *********** Better solution ************ */
+console.log('***** Better solution *****');
+
+function makeSquare (n) {
+    var result = '';
+    var space = ' ';
+    var star = '*';
+    var newLine = '\n';
+
+    for (var i = 0; i < n; i++) {
+        for (var j = 0; j < n; j++) {
+            if (i === 0 || i === n-1 || j === 0 || j === n-1) {
+                result += star;
+            }else {
+                result += space;
+            }
+        }
+        result += newLine;
+    }
+    return result;
+}
+
+console.log(makeSquare(5));
 
 console.log('\n');
 /*
@@ -134,6 +156,23 @@ function draw (a, b, c) {
 
 var f = draw (5, 3, 7);
 console.log(f);
+
+/* *********** Better solution ************ */
+console.log('***** Better solution *****');
+
+function makeChart () {
+    var result = '';
+
+    for (var i = 0; i < arguments.length; i++) {
+        for (var j = 0; j < arguments[i]; j++) {
+            result += '*';
+        }
+        result += '\n';
+    }
+    return result;
+}
+
+console.log(makeChart(5,3,7));
 
 console.log('\n');
 /* 7. Write a program that calculates a number of digits of a given number. */
