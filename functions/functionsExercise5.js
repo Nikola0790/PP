@@ -320,6 +320,30 @@ Output: true | false | true
 
 console.log('*** TASK 11 ***');
   
+function isPalindrome (str) {
+
+    var newStr = '';
+    var result = '';
+
+    for (var i = 0; i < str.length; i++) {
+        if (str[i] !== ' ') {
+            newStr += str[i];
+        }
+    }
+
+    console.log(newStr);
+
+    for (var j = 0; j < newStr.length / 2; j++) {                         
+        if (newStr[j] !== newStr[newStr.length - j - 1]) {
+            result = 'false';
+        } else {
+            result = 'true';
+        }
+    }
+    return result;
+}
+
+console.log(isPalindrome('a nut for a jar of tuna'));
 
 console.log('\n');
 
