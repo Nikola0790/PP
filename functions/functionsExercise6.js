@@ -8,7 +8,7 @@ function countVowels (string) {
     var count = 0;
 
     for (var i = 0; i < string.length; i++) {
-        if (string[i] === 'a' || string[i] === 'e' || string[i] === 'i' || string[i] === 'o' || string[i] === 'A' || string[i] === 'E' || string[i] === 'I' || string[i] === 'O' || string[i] === 'E') {
+        if (string[i] === 'a' || string[i] === 'e' || string[i] === 'i' || string[i] === 'o' || string[i] === 'u' || string[i] === 'A' || string[i] === 'E' || string[i] === 'I' || string[i] === 'O' || string[i] === 'E' || string[i] === 'U') {
             count ++;
         }
     }
@@ -16,6 +16,53 @@ function countVowels (string) {
 }
 
 console.log(countVowels('Nikola like football gAmE.'));
+
+console.log('\n');
+
+/****** SWITCH solution ************/
+
+console.log('*** Switch solution ***');
+
+function countV (string_1) {
+    var count = 0;
+    for (var j = 0; j < string_1.length; j ++) {
+        switch (string_1[j]) {
+            case 'a':
+                count ++
+            break;
+            case 'e':
+                count ++
+            break;
+            case 'i':
+                count ++
+            break;
+            case 'o':
+                count ++
+            break;
+            case 'u':
+                count ++
+            break;
+            case 'A':
+                count ++
+            break;
+            case 'E':
+                count ++
+            break;
+            case 'I':
+                count ++
+            break;
+            case 'O':
+                count ++
+            break;
+            case 'U':
+                count ++
+            break;
+        }
+    }
+    return count;
+}
+
+console.log(countV('Nikola like football AND race games'));
 
 console.log('\n');
 
@@ -220,7 +267,7 @@ function median (array) {
     return med + ' is median';
 }
 
-console.log(median([2, 1, 5, 3, 4, 6]));
+console.log(median([2, 1, 5, 3, 4, 6, 7]));
 
 console.log('\n');
 
@@ -392,3 +439,27 @@ printed as:
 */
 
 console.log('*** Task 15 ***');
+
+function print (array) {
+
+    var result = ''; 
+    var star = '*';
+    var newLine = '\n';
+    var space = ' ';
+
+    for (var i = -1; i <= array.length; i++) {
+        for (var j = -2; j <= array.length +1; j++) {
+            if (i === -1 || i === array.length || j === -2 || j === array.length +1) {
+                result += star;
+            } else if (j >= 0 && j < array[i].length) {
+                result += array[i][j];
+            } else {
+                result += space;
+            }
+        }
+        result += newLine;
+    }
+    return result;
+}
+
+console.log(print(["Hello", "World", "in", "a", "frame"]));
