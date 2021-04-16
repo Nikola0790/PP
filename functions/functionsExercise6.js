@@ -323,7 +323,7 @@ function retFirMidLast (array) {
     return el;
 }
 
-console.log(retFirMidLast([10, 11, 9, 3, 15, 35, 27, 7, 14]));
+console.log(retFirMidLast([10, 5, 11, 23, 45, 56, 57, 5, 6]));
 
 console.log('\n');
 
@@ -446,10 +446,17 @@ function print (array) {
     var star = '*';
     var newLine = '\n';
     var space = ' ';
+    var maxWord = array[0].length;
+
+    for (var x = 0; x < array.length; x++) {
+        if (maxWord < array[x].length) {
+            maxWord = array[x].length;
+        }
+    }       
 
     for (var i = -1; i <= array.length; i++) {
-        for (var j = -2; j <= array.length +1; j++) {
-            if (i === -1 || i === array.length || j === -2 || j === array.length +1) {
+        for (var j = -2; j <= maxWord +1; j++) {
+            if (i === -1 || i === array.length || j === -2 || j === maxWord +1) {
                 result += star;
             } else if (j >= 0 && j < array[i].length) {
                 result += array[i][j];
