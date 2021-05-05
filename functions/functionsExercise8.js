@@ -10,7 +10,7 @@ console.log('*** Task 1 ***');
 
 function replaceE (a) {
 
-    var b = a;
+    //var b = a;
 
     return (
         function (arr) {
@@ -28,7 +28,7 @@ function replaceE (a) {
             }
             return newArr;
         }
-    )(b);
+    )(a);
 }
 
 var com = replaceE([4, 5, 11, 9]);
@@ -111,15 +111,15 @@ console.log('\n');
 */
 console.log('*** Task 5 ***');
  
-function calcOctalToDecimal (num, r) {
+function calcOctalToDecimal (num) {
     num += '';
     return (function () {
-        return parseInt(num, r);
+        return parseInt(num);
     })();
 }
 
-console.log(calcOctalToDecimal(34, 8));                             //strict mode signals ERROR, when into brackets fill in 034. Don't accept 034 but accept 34.
-console.log('\n');
+console.log(calcOctalToDecimal(0134));                             //ERROR - when into brackets fill in 034. Don't accept 034 but accept 34.
+console.log('\n');                                                 // On default, 0 before number given information that is a octal number and parseInt look him like octal number, who is convert to decimal number.  First example was with two parameters (number, radix). If we use number with 0 on first place, than we don't use radix for octal.
 /*
 6.Write a function that checks if a given string is valid password. The password is valid if it is at least 6 characters long and contains at least one digit. 
 The function should receive two callbacks named successCallback and errorCallback that should be called in case password is correct or invalid. 
