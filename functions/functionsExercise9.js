@@ -167,6 +167,20 @@ Output: false
 */
 console.log('*** Task 7 ***');
 
+var obj = {
+
+    x: 20,
+    y: 30,
+}
+
+function checkProperty (a, b, c) {
+
+    return (a.hasOwnProperty(b) && a[b] === c); 
+}
+
+console.log(checkProperty(obj, 'x', 20));
+console.log(checkProperty(obj, 'z', 20));
+console.log(checkProperty(obj, 'x', 10));
 
 
 /*
@@ -207,7 +221,35 @@ Output: [‘morning’, ‘apple’, ‘tea’, ‘JavaScript’, ‘amazing’]
 */
 console.log('*** Task 9 ***');
 
+function sortArray (arr) {
 
+    var save;
+
+    function countLetterA (str) {
+
+        var count = 0;
+
+        for (var i = 0; i < str.length; i++) {
+            if (str[i] === 'a' || str[i] === 'A') {
+                count ++;
+            }
+        }
+        return count;
+    }
+
+    for (var j = 0; j < arr.length; j++) {
+        for (var k = 0; k < arr.length; k++) {
+            if (countLetterA(arr[j]) < countLetterA(arr[k])) {
+                save = arr[j];
+                arr[j] = arr[k];
+                arr[k] = save;
+            }
+        }
+    }
+    return arr;
+}
+
+console.log(sortArray(['apple', 'tea', 'amazing', 'morning', 'JavaScript', 'C#', 'PHP']));
 
 /*
 10. Write a function that prints out the date of the next day.
