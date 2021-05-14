@@ -182,7 +182,7 @@ console.log(checkProperty(obj, 'x', 20));
 console.log(checkProperty(obj, 'z', 20));
 console.log(checkProperty(obj, 'x', 10));
 
-
+console.log('\n');
 /*
 8. Write a function that checks if every element of the first array is contained in the second
 array. Be careful with repetitions!
@@ -250,18 +250,277 @@ function sortArray (arr) {
 }
 
 console.log(sortArray(['apple', 'tea', 'amazing', 'morning', 'JavaScript', 'C#', 'PHP']));
-
+console.log('\n');
 /*
 10. Write a function that prints out the date of the next day.
 Output: 25. 10. 2018.
 */
 console.log('*** Task 10 ***');
 
+function printNextDate (day, month, year) {
+    
+    if (month > 12) {
+        return 'Month can\'t be higher than 12.'
+    }
+
+    if ((year % 400) === 0) {
+
+        if (month === 1 || month === 3 ||month === 5 || month === 7 || month === 8 || month === 10 || month === 12) {
+            if (day > 31) {
+                return 'Day can\'t be higher than 31.'
+            }
+            if (day === 31 && month === 12) {
+                return 1 + '.' + 1 + '.' + (year + 1) + '.';
+            }
+            if (day === 31) {
+                return 1 + '.' + (month + 1) + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            } else {
+                return (day + 1) + '.' + month + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            }
+            
+        } else if (month === 4 || month === 6 ||month === 9 || month === 11) {
+            if (day > 30) {
+                return 'Day can\'t be higher than 30.'
+            }
+            if (day === 30) {
+                return 1 + '.' + (month + 1) + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            } else {
+                return (day + 1) + '.' + month + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            }
+        } else if (month === 2) {
+            if (day > 29) {
+                return 'Day can\'t be higher than 29.'
+            }
+            if (day === 29) {
+                return 1 + '.' + (month + 1) + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            } else {
+                return (day + 1) + '.' + month + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            }
+        }
+
+    } else if ((year % 100) !== 0 && (year % 4) === 0) {
+
+        if (month === 1 || month === 3 ||month === 5 || month === 7 || month === 8 || month === 10 || month === 12) {
+            if (day === 31 && month === 12) {
+                return 1 + '.' + 1 + '.' + (year + 1) + '.';
+            }
+            if (day > 31) {
+                return 'Day can\'t be higher than 31.'
+            }
+            if (day === 31) {
+                return 1 + '.' + (month + 1) + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            } else {
+                return (day + 1) + '.' + month + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            }
+            
+        } else if (month === 4 || month === 6 ||month === 9 || month === 11) {
+            if (day > 30) {
+                return 'Day can\'t be higher than 30.'
+            }
+            if (day === 30) {
+                return 1 + '.' + (month + 1) + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            } else {
+                return (day + 1) + '.' + month + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            }
+        } else if (month === 2) {
+            if (day > 29) {
+                return 'Day can\'t be higher than 29.'
+            }
+            if (day === 29) {
+                return 1 + '.' + (month + 1) + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            } else {
+                return (day + 1) + '.' + month + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            }
+        }
+
+    } else {
+
+        if (month === 1 || month === 3 ||month === 5 || month === 7 || month === 8 || month === 10 || month === 12) {
+            if (day === 31 && month === 12) {
+                return 1 + '.' + 1 + '.' + (year + 1) + '.';
+            }
+            if (day > 31) {
+                return 'Day can\'t be higher than 31.'
+            }
+            if (day === 31) {
+                return 1 + '.' + (month + 1) + '.' + year + '.';
+            } else {
+                return (day + 1) + '.' + month + '.' + year + '.';
+            }
+            
+        } else if (month === 4 || month === 6 ||month === 9 || month === 11) {
+            if (day > 30) {
+                return 'Day can\'t be higher than 30.'
+            }
+            if (day === 30) {
+                return 1 + '.' + (month + 1) + '.' + year + '.';
+            } else {
+                return (day + 1) + '.' + month + '.' + year + '.';
+            }
+        } else if (month === 2) {
+            if (day > 28) {
+                return 'Day can\'t be higher than 28.'
+            }
+            if (day === 28) {
+                return 1 + '.' + (month + 1) + '.' + year + '.';
+            } else {
+                return (day + 1) + '.' + month + '.' + year + '.';
+            }
+        }   
+    } 
+}
+
+console.log(printNextDate(24, 10, 2018));
+console.log('\n');
 /*
 11. Write a function that prints out the date of the previous day.
 Output: 23. 10. 2018.
 */
 console.log('*** Task 11 ***');
+
+function printDatePreviousDay (day, month, year) {
+
+    if (month > 12) {
+        return 'Month can\'t be higher than 12.'
+    }
+
+    if (year % 400 === 0) {
+
+        if (month === 1 || month === 5 || month === 7 || month === 8 || month === 10 || month === 12) {
+            if (day > 31) {
+                return 'Day can\'t be higher than 31.'
+            }
+            if (day === 1 && month === 1) {
+                return 31 + '.' + 12 + '.' + (year - 1) + '.';
+            }
+            if (day === 1) {
+                return 31 + '.' + (month - 1) + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            } else {
+                return (day - 1) + '.' + month + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            }  
+        } else if (month === 4 || month === 6 ||month === 9 || month === 11) {
+            if (day > 30) {
+                return 'Day can\'t be higher than 30.'
+            }
+            if (day === 1) {
+                return 30 + '.' + (month - 1) + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            } else {
+                return (day - 1) + '.' + month + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            }
+        } else if (month === 3) {
+            if (day > 31) {
+                return 'Day can\'t be higher than 31.'
+            }
+            if (day === 1) {
+                return 29 + '.' + (month - 1) + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            } else {
+                return (day - 1) + '.' + month + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            }  
+        } else if (month === 2) {
+            if (day > 29) {
+                return 'Day can\'t be higher than 29.'
+            }
+            if (day === 1) {
+                return 31 + '.' + (month - 1) + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            } else {
+                return (day - 1) + '.' + month + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            }
+        }
+
+    } else if (year % 100 !== 0 && year % 4 === 0) {
+
+        if (month === 1 ||month === 5 || month === 7 || month === 8 || month === 10 || month === 12) {
+            if (day > 31) {
+                return 'Day can\'t be higher than 31.'
+            }
+            if (day === 1 && month === 1) {
+                return 31 + '.' + 12 + '.' + (year - 1) + '.';
+            }
+            if (day === 1) {
+                return 31 + '.' + (month - 1) + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            } else {
+                return (day - 1) + '.' + month + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            }  
+        } else if (month === 4 || month === 6 ||month === 9 || month === 11) {
+            if (day > 30) {
+                return 'Day can\'t be higher than 30.'
+            }
+            if (day === 1) {
+                return 30 + '.' + (month - 1) + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            } else {
+                return (day - 1) + '.' + month + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            }
+        } else if (month === 3) {
+            if (day > 31) {
+                return 'Day can\'t be higher than 31.'
+            }
+            if (day === 1) {
+                return 29 + '.' + (month - 1) + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            } else {
+                return (day - 1) + '.' + month + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            }  
+        } else if (month === 2) {
+            if (day > 29) {
+                return 'Day can\'t be higher than 29.'
+            }
+            if (day === 1) {
+                return 31 + '.' + (month - 1) + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            } else {
+                return (day - 1) + '.' + month + '.' + year + '.' + ' This year is LEAP YEAR !!!';
+            }
+        }
+
+    } else {
+
+        if (month === 1 ||month === 5 || month === 7 || month === 8 || month === 10 || month === 12) {
+            if (day > 31) {
+                return 'Day can\'t be higher than 31.'
+            }
+            if (day === 1 && month === 1) {
+                if ((year - 1) % 400 === 0 || ((year - 1) % 100 !== 0 && (year - 1) % 4 === 0)) {
+                    return 31 + '.' + 12 + '.' + (year - 1) + '.' + ' This year is LEAP YEAR !!!';
+                } else {
+                    return 31 + '.' + 12 + '.' + (year - 1) + '.';
+                }  
+            }
+            if (day === 1) {
+                return 31 + '.' + (month - 1) + '.' + year + '.';
+            } else {
+                return (day - 1) + '.' + month + '.' + year + '.';
+            }  
+        } else if (month === 4 || month === 6 ||month === 9 || month === 11) {
+            if (day > 30) {
+                return 'Day can\'t be higher than 30.'
+            }
+            if (day === 1) {
+                return 30 + '.' + (month - 1) + '.' + year + '.';
+            } else {
+                return (day - 1) + '.' + month + '.' + year + '.';
+            }
+        } else if (month === 3) {
+            if (day > 31) {
+                return 'Day can\'t be higher than 31.'
+            }
+            if (day === 1) {
+                return 28 + '.' + (month - 1) + '.' + year + '.';
+            } else {
+                return (day - 1) + '.' + month + '.' + year + '.';
+            }  
+        } else if (month === 2) {
+            if (day > 28) {
+                return 'Day can\'t be higher than 28.'
+            }
+            if (day === 1) {
+                return 31 + '.' + (month - 1) + '.' + year + '.';
+            } else {
+                return (day - 1) + '.' + month + '.' + year + '.';
+            }
+        }
+    }
+}
+
+console.log(printDatePreviousDay(1, 1, 2029));
+console.log('\n');
 /*
 12. Write a function that prints out an array of the numbers aligned from the right side.
 Input: [78, 111, 4, 4321]
