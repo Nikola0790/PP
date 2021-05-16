@@ -122,6 +122,8 @@ b) Write a function that finds all the elements in a given array that start with
 c) Write a function that expects an array and a callback function that filters out some of the elements. Use functions defined in a) or b) to test it. 
     */    
 
+console.log('*** 5 ***');
+
 /* a) */
 
 function findElLessOfGivEl (arr, y) {
@@ -131,3 +133,222 @@ function findElLessOfGivEl (arr, y) {
 console.log(findElLessOfGivEl([2, 3, 8, -2, 11, 4], 6 ));
 
 /* b) */
+
+function findElStartWithPro (arr) {
+
+    var newArr = [];
+
+    for (var i = 0; i < arr.length; i++) {
+        if ((arr[i][0] === 'P' || arr[i][0] === 'p') && (arr[i][1] === 'R' || arr[i][1] === 'r') && (arr[i][2] === 'O' || arr[i][2] === 'o')) {
+            newArr[newArr.length] = arr[i]; 
+        }
+    }
+    return newArr;
+}
+
+console.log(findElStartWithPro(['JavaScript', 'Programming', 'fun', 'product']));
+
+/* c) */
+
+function filterSome (arr, func, givNum) {
+    return func (arr, givNum);
+}
+
+console.log(filterSome ([2, 5, 3, 8, 15, -2, 11, 4, 10], findElLessOfGivEl, 9));
+console.log('\n');
+/* 6. 
+a) Write a list (array) of products you usually buy in the supermarket. Write a price and name for each product. For example,
+	[
+        {name: ‘apples’, price: 100}, 
+        {name: ‘milk’, price: 80}, 
+        {name:’bananas’, price: 150}
+    ]
+b) Write a function that calculates the total price of your shopping list. 
+c) Write a function that calculates the average product price of your shopping list. Print this value with the precision of three decimals. 
+d) Write a function that prints out the name of the most expensive product on your shopping list. Write the name in uppercase. 
+ */
+
+console.log('*** 6 ***');
+
+/* a) */
+
+var listProducts = [];
+
+function Product (name, price) {
+    this.name = name,
+    this.price = price
+}
+
+listProducts.push(new Product ('apples', 100), new Product ('bananas', 150), new Product ('milk', 80)); 
+console.log(listProducts);
+
+/* b) */
+
+function totalPrice (list) {
+    var priceAllProd = 0;
+    for (var i = 0; i < list.length; i++) {
+        priceAllProd += list[i].price;
+    }
+    return 'Total price of products: ' + priceAllProd;
+}
+
+console.log(totalPrice(listProducts));
+
+// Second solution by Built in .reduce !!!
+
+var sumPrice = listProducts.reduce (function(a, b) {
+    return a + b.price;
+}, 0);
+
+console.log('Total price of products:', sumPrice);
+
+/* c) */
+
+var averagePrice = listProducts.reduce (function (a, b) {
+    return a + b.price / listProducts.length;
+}, 0);
+
+var average = averagePrice.toFixed(3);
+
+console.log('Average price of products:', average);
+
+/* d) */
+
+listProducts.sort (function (a, b) {
+    return a.price - b.price;
+})
+
+var mostExpenProd = listProducts[listProducts.length - 1].name.toUpperCase(); 
+console.log(mostExpenProd);
+
+console.log('\n');
+
+/* 7. 
+a) Write a function that checks if a given string is written in all capitals.
+b) Write a function that checks if a given string contains any digits.
+c) Write a function that checks if a given string is a valid hexadecimal color.
+d) Write a function that checks if a given number belongs to the interval from 1900 to 2018. 
+e) Write a function named validator that returns an object with properties 
+   stringValidator, passwordValidator, colorValidator, and yearValidator referencing the functions from a) to d).*/
+
+console.log('*** 7 ***');
+
+/* a) */
+
+function checkCapitals (str) {
+    if (str === str.toUpperCase()) {
+        return 'String is ok.'
+    } else {
+        return 'String must be written in all capitals !!!'
+    }
+}
+
+//console.log(checkCapitals('NIKOLA'));
+
+/* b) */
+
+function containDigits (str) {
+
+    var sum = 0;
+    var check;
+
+    for (var i = 0; i < str.length; i++) {
+        if (isNaN(parseInt(str[i])) === false) {
+            sum++;
+        } 
+    }
+    if (sum > 0) {
+        check = 'Pass is ok, contains digit';
+    } else {
+        check = 'Password isn\'t ok, must contains digit !!!'
+    }
+    return check;
+    
+}
+
+//console.log(containDigits('Niko9'));
+
+/* c) */
+
+function checkHexaColor (str) {
+
+    var regex = /[A-Z]/g;
+    var regex_2 = /[a-z]/g;
+    var result;
+    var count = 0;
+
+    for (var i = 1; i < str.length; i++) {
+        if (isNaN(parseInt(str[i])) === true && str[i].match(regex) === null && str[i].match(regex_2) === null) {
+            count++;
+        }
+    }
+    if (count > 0 || str[0] !== '#') {
+        result = 'Color code is not correct !!!';
+    } else {
+        result = 'Color code is valid.'
+    }  
+    return result;
+}
+
+//console.log(checkHexaColor('#90ffcc'));
+
+
+
+/* d) */
+
+function checkIntervalYear (num) {
+    if (num >= 1900 && num < 2018) {
+        return 'Year is ok.'
+    } else {
+        return 'Year must belongs to the interval from 1900 to 2018.'
+    }
+}
+
+//console.log(checkIntervalYear(2010));
+
+/* e) */
+
+function Validator (name, pass, color, year) {
+    this.stringValidator = name,
+    this.passwordValidator = pass,
+    this.colorValidator = color,
+    this.yearValidator = year
+}
+
+var validationData = new Validator (checkCapitals, containDigits, checkHexaColor, checkIntervalYear);
+console.log(validationData);
+console.log(validationData.stringValidator("NIKOLA"));
+console.log(validationData.passwordValidator('nik90'));
+console.log(validationData.colorValidator('#99ffcc'));
+console.log(validationData.yearValidator(1995));
+
+console.log('\n NEXT PRINT IS WITH MISTAKES. \n');
+console.log(
+    validationData.stringValidator('nikola'), '\n', 
+    validationData.passwordValidator('nik'), '\n',
+    validationData.colorValidator('#99ff*cc'), '\n',
+    validationData.yearValidator(2021)
+);
+
+/* 
+8. Write a function that calculates a number of days to your birthday.
+    Input: 25 February 
+    Output: 5 days 
+
+9. Write a function that for a given departure and arrival time calculates the time the trip takes.
+	Input: 8:22:13 11:43:22
+	Output: 3 hours 21 minutes 9 seconds
+
+10. 
+    a) Write a constructor function that creates points in space. Each point in space has its own x, y, and z coordinate. For example, (3, 5, 1) can be a point in space.
+    b) Write a function that calculates the distance between two points in the space
+
+11. 
+a) Write a function that generates a random integer value between 5 and 20.
+b) Write a function that generates a random integer value between 50 and 100. 
+c) Write a function which expects a number and a callback generator function and returns an array of numbers produced by the generator function.  
+
+12. Write a function that shuffles the elements of a given array. 
+		Input: [3, 6, 11, 2, 9, 1]
+		Output: [6, 2, 9, 1, 3, 11]  (it can be any random permutation of the given array)
+*/
