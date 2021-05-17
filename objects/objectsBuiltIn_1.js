@@ -330,25 +330,131 @@ console.log(
     validationData.yearValidator(2021)
 );
 
+console.log('\n');
 /* 
 8. Write a function that calculates a number of days to your birthday.
     Input: 25 February 
     Output: 5 days 
+*/
+console.log('*** 8 ***');
 
+function calcNumOfDaysToBirth (today, birthday) {
+
+    var date_1 = new Date (today);
+    var date_2 = new Date (birthday);
+
+    var difference = date_2.getTime() - date_1.getTime();
+
+    return difference / (1000 * 3600 * 24) + ' days';
+}
+
+console.log(calcNumOfDaysToBirth('05/17/2021', '09/20/2021'));
+console.log('\n');
+
+/*
 9. Write a function that for a given departure and arrival time calculates the time the trip takes.
 	Input: 8:22:13 11:43:22
 	Output: 3 hours 21 minutes 9 seconds
+*/
+console.log('*** 9 ***');
 
+function tripTime () {
+
+}
+
+console.log('\n');
+
+/*
 10. 
     a) Write a constructor function that creates points in space. Each point in space has its own x, y, and z coordinate. For example, (3, 5, 1) can be a point in space.
     b) Write a function that calculates the distance between two points in the space
 
+*/
+console.log('*** 10 ***');
+
+/* a) */
+
+function PointInSpace (x, y, z) {
+
+    this.x = x,
+    this.y = y,
+    this.z = z
+}
+
+var coordinates_1= new PointInSpace (15, 5, 11);
+var coordinates_2= new PointInSpace (3, 2, 0);
+console.log(coordinates_1, coordinates_2);
+
+/* b) */
+
+function distance (coordinates1, coordinates2) {
+
+    var result, x, y, z;
+
+    x = coordinates1.x - coordinates2.x;
+    y = coordinates1.y - coordinates2.y;
+    z = coordinates1.z - coordinates2.z;
+
+    return result = (Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2))).toFixed(3);
+}
+
+console.log(distance(coordinates_1, coordinates_2));
+console.log('\n');
+
+/*
 11. 
 a) Write a function that generates a random integer value between 5 and 20.
 b) Write a function that generates a random integer value between 50 and 100. 
 c) Write a function which expects a number and a callback generator function and returns an array of numbers produced by the generator function.  
+*/
+console.log('*** 11 ***');
 
+/* a) */
+function randomIntBet5_20 () {
+    return Math.floor(Math.random() * (20 - 5 + 1) + 5);
+}
+
+console.log(randomIntBet5_20());
+
+/* b) */
+function randomIntBet50_100 () {
+    return Math.floor(Math.random() * (100 - 50 + 1) + 50);
+}
+
+console.log(randomIntBet50_100());
+
+/* c) */
+
+function makeArr (arrayLength, funcGen) {
+    var arr = [];
+    for (var i = 0; i < arrayLength; i++) {
+        arr.push(funcGen());
+    }
+    return arr;
+} 
+
+console.log(makeArr(5, randomIntBet50_100));
+console.log('\n');
+
+/*
 12. Write a function that shuffles the elements of a given array. 
 		Input: [3, 6, 11, 2, 9, 1]
 		Output: [6, 2, 9, 1, 3, 11]  (it can be any random permutation of the given array)
 */
+console.log('*** 12 ***');
+
+function shufflesEl (arr) {
+
+    var temp;
+
+    for(var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    return arr;
+}
+
+console.log(shufflesEl([3, 6, 11, 2, 9, 1]));
