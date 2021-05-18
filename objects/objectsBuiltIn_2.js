@@ -47,6 +47,33 @@ console.log('\n');
 */
 console.log('*** 3 ***');
 
+// Bad solution **************************************
+function sortStr (str) {
+
+    var arr = str.split(' ');
+    var a2 = arr[0].split('').sort().join('');
+    var a3 = arr[1].split('').sort().join('');
+    var a4 = arr[2].split('').sort().join('');
+    return a2 + ' ' +  a3 + ' ' + a4; 
+}
+
+console.log(sortStr("Republic Of Serbia"));
+console.log('\n');
+
+
+// Good solution ***********************************
+
+function sortStr (str) {
+
+    var arr = str.split(' ');
+    var arrHandler = arr.map(function (el) {
+        return el.split('').sort().join('');
+    })
+    return arrHandler.join(' ')
+}
+
+console.log(sortStr("Republic Of Serbia"));
+
 /*
 4.  Write a function to split a string and convert it into an array of words.
 
@@ -59,7 +86,7 @@ function splitString (name) {
     return name.split(' ');
 }
 
-console.log(splitString('John Snow'));  // When I check typeof result of function, I get OBJECT in console. Why? ************************************************************
+console.log(splitString('John Snow'));
 console.log('\n');
 
 /*
@@ -68,8 +95,18 @@ console.log('\n');
 	"John Snow" -> 	"John S."
 */
 console.log('*** 5 ***');
-// Try with .substring
 
+function toAbbreviatedForm (str) {
+
+    var splitStr = str.split(' ');
+    if (splitStr.length > 1) {
+        return splitStr[0] + ' ' + splitStr[1].charAt(0) + '.';
+    }
+    return splitStr[0];
+}
+
+console.log(toAbbreviatedForm('John Snow'));
+console.log('\n');
 /*
 6.  Write a function that adds string to the left or right of string, by replacing it’s characters.
 
@@ -142,3 +179,26 @@ console.log('\n');
     "The Quick Brown Fox" -> "tHE qUICK bROWN fOX"
 */
 console.log('*** 9 ***');
+
+function swapsCase (str) {
+    
+    var UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var LOWER = 'abcdefghijklmnopqrstuvwxyz';
+    var newStr = '';
+
+    for (var i = 0; i < str.length; i++){
+        for (var j = 0; j < UPPER.length; j++) {
+            if (str[i] === UPPER[j]) {
+                newStr += str[i].toLowerCase();
+            } else if (str[i] === LOWER[j]) {
+                newStr += str[i].toUpperCase();
+            } else if (str[i] === ' ') {
+                newStr += ' ';
+                break;
+            }
+        }
+    }
+    return newStr;
+}
+
+console.log(swapsCase("The Quick Brown Fox"));
