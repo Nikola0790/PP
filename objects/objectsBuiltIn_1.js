@@ -358,12 +358,37 @@ console.log('\n');
 */
 console.log('*** 9 ***');
 
-function tripTime () {
+function tripTime (departure, arrival) {
 
+    var hours, min, sec, splitDeparture, splitArrival;
+
+    splitDeparture = departure.split(':');
+    splitArrival = arrival.split(':');
+
+    if (parseInt(splitDeparture[0]) > parseInt(splitArrival[0])) {
+        hours = parseInt(splitArrival[0]) + 24 - parseInt(splitDeparture[0]);
+    } else {
+        hours = parseInt(splitArrival[0]) - parseInt(splitDeparture[0]);
+    }
+
+    if (parseInt(splitDeparture[1]) < parseInt(splitArrival[1])) {
+        min = parseInt(splitArrival[1]) - parseInt(splitDeparture[1]);
+    } else {
+        min = parseInt(splitDeparture[1]) - parseInt(splitArrival[1]);
+    }
+
+    if (parseInt(splitDeparture[2]) < parseInt(splitArrival[2])) {
+        sec = parseInt(splitArrival[2]) - parseInt(splitDeparture[2]);
+    } else {
+        sec = parseInt(splitDeparture[2]) - parseInt(splitArrival[2]);
+    }
+    
+    return hours + ' hours ' + min + ' minutes ' + sec + ' seconds'
 }
 
-console.log('\n');
+console.log(tripTime('8:22:13', '11:43:22'));
 
+console.log('\n');
 /*
 10. 
     a) Write a constructor function that creates points in space. Each point in space has its own x, y, and z coordinate. For example, (3, 5, 1) can be a point in space.
