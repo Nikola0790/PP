@@ -73,6 +73,7 @@ function sortStr (str) {
 }
 
 console.log(sortStr("Republic Of Serbia"));
+console.log('\n');
 
 /*
 4.  Write a function to split a string and convert it into an array of words.
