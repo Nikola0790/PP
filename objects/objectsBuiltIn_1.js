@@ -96,7 +96,7 @@ console.log('*** 4 ***');
 function findMinValueAndLastPosOfValue (arr) {
 
     var obj = {};
-    var min = Math.min(...arr);
+    var min = Math.min(...arr); // Change solution, ... don't use yet !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     var lastIndex = arr.lastIndexOf(min);
 
     return obj = {
@@ -107,7 +107,30 @@ function findMinValueAndLastPosOfValue (arr) {
 
 console.log(findMinValueAndLastPosOfValue([1, 4, -2, 11, 8, 1, -2, 3]));
 
+// ************** Way without (...) !!! **********************************************
+
+function findMinValueAndLastPosOfValue (arr) {
+
+    var obj = {};
+    var min = arr[0];
+    var lastIndex;
+
+    for (var i = 0; i < arr.length; i++) {
+        if (min > arr[i]) {
+            min = arr[i];
+        }
+    }
+    lastIndex = arr.lastIndexOf(min);
+    
+    return obj = {
+        minValue: min,
+        minLastIndex: lastIndex
+    } 
+}
+
+console.log(findMinValueAndLastPosOfValue([1, 4, -2, 11, 8, 1, -2, 3]));
 console.log('\n');
+
 /* 5. 
 
 a) Write a function that finds all the elements in a given array less than a given element. 
@@ -127,7 +150,10 @@ console.log('*** 5 ***');
 /* a) */
 
 function findElLessOfGivEl (arr, y) {
-    return arr.filter (x => x < y);
+    //return arr.filter (x => x < y);
+    return arr.filter(function(el) {
+        return el < y;
+    })
 }
 
 console.log(findElLessOfGivEl([2, 3, 8, -2, 11, 4], 6 ));
@@ -155,6 +181,7 @@ function filterSome (arr, func, givNum) {
 }
 
 console.log(filterSome ([2, 5, 3, 8, 15, -2, 11, 4, 10], findElLessOfGivEl, 9));
+console.log(filterSome (['JavaScript', 'Programming', 'fun', 'product'], findElStartWithPro));
 console.log('\n');
 /* 6. 
 a) Write a list (array) of products you usually buy in the supermarket. Write a price and name for each product. For example,
