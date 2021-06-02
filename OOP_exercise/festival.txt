@@ -63,3 +63,18 @@ Use JS built-in Date()object to create Date object
 Use \t and \n special strings to format output 
 Use built-in String methods to transform text from lowercase to uppercase
 Use Array’s built-in methods to add and remove elements from an array
+
+// EXTRA TASKS *******************
+
+Festival.js
+
+When adding a movie to the movie list, make sure that there are no more than 4 movies of the same genre. Also, length of all movies in a list can not be longer than 8 hours.
+
+Handle error when you enter text instead of a number for movie length. Try to stop program execution when this type of error happens.
+ 
+Modify the festival so that it accepts maximum number of movies. Handle the error if text is inserted instead of a number for maximum number of movies. 
+
+If there are no programs added to the festival, instead of program data display a message informing the user that the program is yet to be announced.
+
+Weekend festival
+	 Program to be announced

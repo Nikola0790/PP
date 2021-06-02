@@ -98,7 +98,7 @@
 
     var movie_1 = createMovie ('Spider-Man: Homecoming', 133, 'Action');
     var movie_2 = createMovie ('War for the Planet of the Apes', 140, 'Drama');
-    var movie_3 = createMovie ('The Dar Tower', 95, 'Adventure');
+    var movie_3 = createMovie ('The Dark Tower', 95, 'Adventure');
     var movie_4 = createMovie ('Deadpool', 108, 'Comedy');
     var movie_5 = createMovie ('Tom and Jerry', 85, 'Cartoon');
 
