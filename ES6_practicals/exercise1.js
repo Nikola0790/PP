@@ -135,3 +135,25 @@ console.log('\n');
 	Input: ['compiler', 'transpiler', 'babel.js', 'JS standard', 'linter']
 	Output: ['babel.js, 'JS standard']
 */
+console.log('*** TASK 5 ***');
+
+const arr = ['compiler', 'transpiler', 'babel.js', 'JS standard', 'linter'];
+let arrJs = [];
+
+let filterJS = array => array.filter(word => {
+    for (let i = 0; i < word.length; i++) {
+        if ((word[i] === 'J' || word[i] === 'j') && (word[i + 1] === 'S' || word[i + 1] === 's')) {
+            arrJs.push(word);
+            return arrJs;
+        }     
+    }
+})
+
+console.log(filterJS(arr));
+console.log('\n');
+
+/* 
+6. Write a function that filters all integer numbers from the given array. 
+    Input: [1.6, 11.34, 9.23, 7, 3.11, 8]
+	Output: [7, 8]
+*/
