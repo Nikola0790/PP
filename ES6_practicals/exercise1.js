@@ -157,3 +157,171 @@ console.log('\n');
     Input: [1.6, 11.34, 9.23, 7, 3.11, 8]
 	Output: [7, 8]
 */
+
+console.log('*** TASK 6 ***');
+
+let num = [1.6, 11.34, 9.23, 7, 3.11, 8];
+let wholeNum = [];
+
+let filterNum = arr => arr.filter(el => {
+    if (el - Math.round(el) === 0) {
+        wholeNum.push(el);   
+        return wholeNum;
+    }
+    
+})
+
+console.log(filterNum(num));
+console.log('\n');
+
+/* 
+7. Write a function that filters all integer arguments that contain digit 5.
+	Function arguments: 23, 11.5, 9, 'abc', 45, 28, 553 
+	Output: [45, 553]
+*/
+
+console.log('*** TASK 7 ***');
+
+let result = [];
+
+let numContainNumber5 = (...args) => args.filter(el => {
+    if (el - Math.round(el) === 0) {
+        let num = el.toString();
+        for (let i = 0; i < num.length; i++) {
+            if (num[i] === '5') {
+                result.push(el);
+                return result;
+            } 
+        }   
+    }
+})
+
+const func = numContainNumber5(23, 11.5, 9, 'abc', 45, 28, 553);
+console.log(func);
+console.log('\n');
+/*
+8. Write a function that returns indexes of the elements greater than 10. 
+	Input: [1.6, 11.34, 29.23, 7, 3.11, 18]
+	Output: 1, 2, 5
+*/
+
+console.log('*** TASK 8 ***');
+
+let indexes = '';
+
+let numGreaterThan10 = arr => arr.forEach(num => {
+    if (num > 10) {
+        indexes += `${arr.indexOf(num)} `;
+    }
+})
+
+numGreaterThan10([1.6, 11.34, 29.23, 7, 3.11, 18]);
+console.log(indexes);
+console.log('\n');
+
+/* 
+9. 
+a) Create an array of persons. A person should be an object with name and age properties. Experiment with enhanced object literals. 
+b) Write a function that prints out the names of persons older than 25. 
+c) Write a function that check if there is a person older than 40.
+d) Write a function that checks if all persons are older than 20.   
+*/
+console.log('*** TASK 9 ***');
+
+let persons = [{name: 'Nikola', age: 30}, {name: 'John', age: 15}, {name: 'Alex', age: 34}];
+
+let personNameOlderThan25 = arr => {
+    let older25 = '';
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].age > 25) {
+            older25 += `${arr[i].name} `
+        }
+    }
+    return older25;
+}
+
+let checkIfOlderThan40 = arr => {
+    let result;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].age > 40) {
+            result = 'Yes'
+            break;
+        } else {
+            result = 'No'
+        }
+    }
+    return result;
+}
+
+let checkAllOlderThan20 = arr => {
+    let res;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].age < 20) {
+            res = `All persons aren't older than 20, some of persons are younger.`
+            break;
+        } else {
+            res = `Yes, all persons are older than 20.`
+        }
+    }
+    return res;
+}
+
+console.log(personNameOlderThan25(persons));
+console.log(checkIfOlderThan40(persons));
+console.log(checkAllOlderThan20(persons));
+
+/*
+10. Write a function that checks if the given array is an array of positive integer values. 
+
+	Input: [3, 11, 9, 5, 6]
+	Output: yes
+
+	Input: [3, -12, 4, 11]
+	Output: no
+*/
+console.log('*** TASK 10 ***');
+
+let positiveOrNegative = arr => {
+    let result;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] < 0) {
+            result = 'No';
+            break;
+        } else {
+            result = 'Yes';
+        }
+    } 
+    return result; 
+}
+
+console.log(positiveOrNegative([3, -12, 4, 11]));
+console.log(positiveOrNegative([3, 11, 9, 5, 6]));
+console.log('\n');
+
+/*
+11. Write a function that calculates the product of the elements of the array. 
+    Input: [2, 8, 3]
+    Output:  48
+*/
+console.log('*** TASK 11 ***');
+
+let product = arr => {
+    let result = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        result *= arr[i];
+    }
+    return result;
+}
+
+console.log(product([2, 8, 3]));
+console.log('\n');
+
+/*
+12. Write a function that calculates the maximum of the given array. 
+    Input: [2, 7, 3, 8, 5.4] 
+	Output: 8
+*/
+console.log('*** TASK 12  ***');
+
+let maxNum = arr => Math.max(...arr);
+console.log(maxNum([2, 7, 3, 8, 5.4]));
