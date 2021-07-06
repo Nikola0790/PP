@@ -7,16 +7,21 @@
 */
 console.log('*** TASK 1 ***');
 
-let array = ['hello', 'there', 'ES', 6];
-let arr2 = [];
 
-array.forEach(element => {
-    if (typeof element === 'string') {
-        arr2.push(element.charAt(0).toUpperCase() + element.slice(1, element.length));
-    }
-}); 
+let array = ['hello', 'there', 'ES', 6, 'java'];
 
-console.log(arr2);
+let capitalizeFirstLetter = arr => {
+    let arr2 = [];
+
+    array.forEach(element => {
+        if (typeof element === 'string') {
+            arr2.push(element.charAt(0).toUpperCase() + element.slice(1, element.length));
+        }
+    });
+    return arr2;
+}
+
+console.log(capitalizeFirstLetter(array));
 
 /* let firstLetterCap = (arr) => {
     let arr2 = [];
@@ -269,7 +274,7 @@ let checkAllOlderThan20 = arr => {
 console.log(personNameOlderThan25(persons));
 console.log(checkIfOlderThan40(persons));
 console.log(checkAllOlderThan20(persons));
-
+console.log('\n');
 /*
 10. Write a function that checks if the given array is an array of positive integer values. 
 
