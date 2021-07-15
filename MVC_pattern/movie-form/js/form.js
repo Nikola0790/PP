@@ -29,20 +29,29 @@ function createMovie () {
         return newMovie.getData();
     }
 
-    var elementLi = document.createElement('li');
-    listMovieNode.appendChild(elementLi);
-    elementLi.textContent = create(titleNode.value, durationNode.value, genreNode.value);
-
-    /////// add movie to movie select menu
-
-    var elementOptionMovie = document.createElement('option');
-    movieSelectNode.appendChild(elementOptionMovie);
-    elementOptionMovie.textContent = elementLi.textContent;
-
-    ///// reset input
-    titleNode.value = '';
-    durationNode.value = '';
-    genreNode.value = genreNode.options[0].value;
+    if(!titleNode.value) {
+        errorMovieNode.textContent = 'Title is required !!!';
+    } else if (!durationNode.value) {
+        errorMovieNode.textContent = 'Duration is required !!!';
+    } else if (!genreNode.value) {
+        errorMovieNode.textContent = 'Genre is required !!!';
+    } else {
+        errorMovieNode.textContent = '';
+        var elementLi = document.createElement('li');
+        listMovieNode.appendChild(elementLi);
+        elementLi.textContent = create(titleNode.value, durationNode.value, genreNode.value);
+    
+        /////// add movie to movie select menu
+    
+        var elementOptionMovie = document.createElement('option');
+        movieSelectNode.appendChild(elementOptionMovie);
+        elementOptionMovie.textContent = elementLi.textContent;
+    
+        ///// reset input
+        titleNode.value = '';
+        durationNode.value = '';
+        genreNode.value = genreNode.options[0].value;
+    }
 }
 
 
@@ -53,18 +62,24 @@ function createProgram () {
         return newProgram.getData()
     }
 
-    var elementProgramLi = document.createElement('li');
-    listProgramNode.appendChild(elementProgramLi);
-    elementProgramLi.textContent = createPr(dateNode.value);
+    if (!dateNode.value) {
+        errorProgramNode.textContent = 'Date is required !!!';
+    } else {
+        errorProgramNode.textContent = '';
+        var elementProgramLi = document.createElement('li');
+        listProgramNode.appendChild(elementProgramLi);
+        elementProgramLi.textContent = createPr(dateNode.value);
 
-    /////////// add program to program select menu
+        /////////// add program to program select menu
 
-    var elementOptionProgram = document.createElement('option');
-    programSelectNode.appendChild(elementOptionProgram);
-    elementOptionProgram.textContent = elementProgramLi.textContent;
+        var elementOptionProgram = document.createElement('option');
+        programSelectNode.appendChild(elementOptionProgram);
+        elementOptionProgram.textContent = elementProgramLi.textContent;
 
-    ////// reset date
-    dateNode.value = '';
+        ////// reset date
+        dateNode.value = '';
+    }
+    
 }
 
 

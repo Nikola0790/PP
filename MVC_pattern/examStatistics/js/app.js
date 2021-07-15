@@ -18,6 +18,5 @@ var statisticPercentFailNode = document.querySelector('#failed-percent');
 
 var bttNode = document.querySelector('.button-add');
 
-bttNode.addEventListener('click', validatesData);
 bttNode.addEventListener('click', addStudentDataToList);
 bttNode.addEventListener('click', refreshStatistic);
