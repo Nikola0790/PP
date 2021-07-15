@@ -1,54 +1,3 @@
-//function collectData () {
-/*     var subjectSelect = document.querySelector('#subject');
-    var inputNameData = document.querySelector('#name');
-    var inputGradeData = document.querySelector('#grade');
-
-    /////////////////////////////////////
-
-    var passedListNode = document.querySelector('.passedList');
-    var failedListNode = document.querySelector('.failedList');
-
-    /////////////////////////////////////
-
-    var statisticPassNode = document.querySelector('#passed-num');
-    var statisticFailNode = document.querySelector('#failed-num');
-    var statisticPercentPassNode = document.querySelector('#passed-percent');
-    var statisticPercentFailNode = document.querySelector('#failed-percent');
-
-    /////////////////////////////////////
-
-    var bttNode = document.querySelector('.button-add'); */
-
-//}
-
-// BAD SOLUTION WITH REMOVE EVENT LISTENER !!!!!!!!! ****************************************************
-function validatesData () {
-    if (inputNameData.value === "") {
-        alert ("NAME and SURNAME are required!");
-        bttNode.removeEventListener('click', addStudentDataToList);
-        bttNode.removeEventListener('click', refreshStatistic);
-    } else if (inputNameData.value.split(" ").length !== 2) {
-        alert ("INVALID INPUT!");
-        bttNode.removeEventListener('click', addStudentDataToList);
-        bttNode.removeEventListener('click', refreshStatistic);
-    } else if (inputNameData.value.split(" ").length === 2) {
-        bttNode.addEventListener('click', addStudentDataToList);
-        bttNode.addEventListener('click', refreshStatistic);
-    }
-    if (inputGradeData.value === "") {
-        alert ("GRADE is required!");
-        bttNode.removeEventListener('click', addStudentDataToList);
-        bttNode.removeEventListener('click', refreshStatistic);
-    } else if (inputGradeData.value < 1 || inputGradeData.value > 10) {
-        alert ("Range of grade from 1 to 10");
-        bttNode.removeEventListener('click', addStudentDataToList);
-        bttNode.removeEventListener('click', refreshStatistic);
-    } else if (inputGradeData.value > 0 || inputGradeData.value < 11) {
-        bttNode.addEventListener('click', addStudentDataToList);
-        bttNode.addEventListener('click', refreshStatistic);
-    }
-}
-
 // Use constructor StudentList
 var listsForPassedFailed = new StudentsList ();
 
@@ -56,19 +5,28 @@ var listsForPassedFailed = new StudentsList ();
 function addStudentDataToList () {
     
     // Use constructor Exam
-    var examInfo = new Exam (subjectSelect.value, inputNameData.value, inputGradeData.value);
-    var passOrFail = examInfo.hasPassed();
-    var elementLi = document.createElement('li');
-    
-    if (passOrFail === 'Passed') {
-        passedListNode.appendChild(elementLi);
-        elementLi.textContent = examInfo.getExaminfo() + ' ' + examInfo.grade;
-        listsForPassedFailed.addStudentsToPassList(examInfo);
-    } else if (passOrFail === 'Failed') {
-        failedListNode.appendChild(elementLi);
-        elementLi.textContent = examInfo.getExaminfo() + ' ' + examInfo.grade;
-        listsForPassedFailed.addStudentsToFailList(examInfo);
+    if (!inputNameData.value) {
+        alert ('Name is required !!!')
+    } else if (inputNameData.value.split(' ').length !== 2) {
+        alert ('BOX NAME - must have First name and Second name !!!')
+    } else if (!inputGradeData.value) {
+        alert('Grade is required !!!')
+    } else {
+        var examInfo = new Exam (subjectSelect.value, inputNameData.value, inputGradeData.value);
+        var passOrFail = examInfo.hasPassed();
+        var elementLi = document.createElement('li');
+        
+        if (passOrFail === 'Passed') {
+            passedListNode.appendChild(elementLi);
+            elementLi.textContent = examInfo.getExaminfo() + ' ' + examInfo.grade;
+            listsForPassedFailed.addStudentsToPassList(examInfo);
+        } else if (passOrFail === 'Failed') {
+            failedListNode.appendChild(elementLi);
+            elementLi.textContent = examInfo.getExaminfo() + ' ' + examInfo.grade;
+            listsForPassedFailed.addStudentsToFailList(examInfo);
+        }
     }
+    
 }
 
 // Func for refresh statistics
